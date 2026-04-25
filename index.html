@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>O Diário de Hass</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+ 
+<!-- CURSOR -->
+<div class="cursor" id="cursor">
+  <div class="cursor-outer"></div>
+  <div class="cursor-inner"></div>
+</div>
+ 
+<!-- PARTICLES -->
+<canvas id="particles"></canvas>
+ 
+<!-- LOGO -->
+<div class="logo-header">
+  <span class="logo-title">O Diário de</span>
+  <span class="logo-main">HASS</span>
+  <span class="logo-sub">Escolha o seu caminho</span>
+</div>
+ 
+<div class="scene" id="scene">
+ 
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="divider-emblem">✦</div>
+  </div>
+ 
+  <!-- LEFT: VETERANOS -->
+  <div class="panel panel-left" id="panel-left"
+    onmouseenter="lean('left')" onmouseleave="resetLean()"
+    onclick="navigate('')">
+ 
+    <div class="panel-bg"></div>
+    <div class="panel-vignette"></div>
+    <div class="edge-glow"></div>
+    <div class="fog">
+      <div class="fog-layer"></div>
+      <div class="fog-layer"></div>
+    </div>
+ 
+    <!-- RUNES -->
+    <div class="runes rune-left">SANGUIS · FATUM · TENEBRAE</div>
+ 
+    <!-- CORNERS -->
+    <div class="corner corner-tl">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2 L2 16 M2 2 L16 2" stroke="#C0392B" stroke-width="1.5"/>
+        <path d="M6 6 L6 12 M6 6 L12 6" stroke="#C0392B" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="corner corner-bl">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2 L2 16 M2 2 L16 2" stroke="#C0392B" stroke-width="1.5"/>
+        <path d="M6 6 L6 12 M6 6 L12 6" stroke="#C0392B" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+    </div>
+ 
+    <div class="panel-content">
+      <div class="door-frame">
+        
+      </div>
+      <span class="path-label">Para os que já conhecem</span>
+      <h2 class="path-name">Veteranos</h2>
+      <p class="path-desc">Você já atravessou as sombras. Agora reclame o que é seu.</p>
+      <a class="path-cta" href="https://odiariodehass.com/finalizar-compra/?h_item=combo-1-vol-1-vol-2-e-vol-3">
+        Entrar pela porta vermelha
+      </a>
+    </div>
+ 
+    <!-- LORE SCROLL -->
+    <div class="lore-scroll">
+      <div class="lore-scroll-border">
+        <span class="lore-tag">Trilogia Completa</span>
+        <p class="lore-text">Volumes I, II e III — a saga completa nas suas mãos.</p>
+        <span class="lore-pages">1.117 páginas</span>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- RIGHT: NOVATOS -->
+  <div class="panel panel-right" id="panel-right"
+    onmouseenter="lean('right')" onmouseleave="resetLean()"
+    onclick="navigate('https://odiariodehass.com/finalizar-compra/?h_item=livro-o-diario-de-hass-volume-1')">
+ 
+    <div class="panel-bg"></div>
+    <div class="panel-vignette"></div>
+    <div class="edge-glow"></div>
+    <div class="fog">
+      <div class="fog-layer"></div>
+      <div class="fog-layer"></div>
+    </div>
+ 
+    <!-- RUNES -->
+    <div class="runes rune-right">NOVUS · ITER · LUX</div>
+ 
+    <!-- CORNERS -->
+    <div class="corner corner-tr">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2 L2 16 M2 2 L16 2" stroke="#00A896" stroke-width="1.5"/>
+        <path d="M6 6 L6 12 M6 6 L12 6" stroke="#00A896" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="corner corner-br">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2 L2 16 M2 2 L16 2" stroke="#00A896" stroke-width="1.5"/>
+        <path d="M6 6 L6 12 M6 6 L12 6" stroke="#00A896" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+    </div>
+ 
+    <div class="panel-content">
+      <div class="door-frame">
+        
+      </div>
+      <span class="path-label">Para os que chegam agora</span>
+      <h2 class="path-name">Novatos</h2>
+      <p class="path-desc">Todo mestre foi um dia aprendiz. O primeiro passo começa aqui.</p>
+      <a class="path-cta" href="https://odiariodehass.com/finalizar-compra/?h_item=livro-o-diario-de-hass-volume-1">
+        Entrar pela porta verde
+      </a>
+    </div>
+ 
+    
+ 
+</div>
+ 
+<!-- INSTRUCTION -->
+<div class="instruction">
+  <p class="instruction-text">Passe o cursor sobre uma das portas para escolher</p>
+  <div class="instruction-line"></div>
+</div>
+ 
+<script>
+const scene = document.getElementById('scene');
+const cursor = document.getElementById('cursor');
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+ 
+/* CURSOR */
+let mx = window.innerWidth/2, my = window.innerHeight/2;
+let cx = mx, cy = my;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+  cx += (mx - cx) * 0.18;
+  cy += (my - cy) * 0.18;
+  cursor.style.left = cx + 'px';
+  cursor.style.top = cy + 'px';
+  requestAnimationFrame(animCursor);
+})();
+ 
+/* LEAN */
+let leanTimeout;
+function lean(side) {
+  clearTimeout(leanTimeout);
+  scene.classList.remove('lean-left','lean-right');
+  scene.classList.add('lean-' + side);
+  document.body.classList.add('hovering');
+}
+function resetLean() {
+  clearTimeout(leanTimeout);
+  leanTimeout = setTimeout(() => {
+    scene.classList.remove('lean-left','lean-right');
+    document.body.classList.remove('hovering');
+  }, 120);
+}
+ 
+/* NAVIGATE */
+function navigate(url) {
+  document.body.style.transition = 'opacity 0.6s';
+  document.body.style.opacity = '0';
+  setTimeout(() => window.location.href = url, 600);
+}
+ 
+/* PARTICLES */
+let W, H, particles = [];
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+ 
+class Particle {
+  constructor(side) {
+    this.side = side;
+    this.reset();
+  }
+  reset() {
+    const half = W / 2;
+    this.x = this.side === 'left'
+      ? Math.random() * half
+      : half + Math.random() * half;
+    this.y = H * 0.6 + Math.random() * H * 0.4;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = -(0.3 + Math.random() * 0.8);
+    this.alpha = 0;
+    this.maxAlpha = 0.15 + Math.random() * 0.25;
+    this.life = 0;
+    this.maxLife = 120 + Math.random() * 180;
+    this.size = 1 + Math.random() * 1.5;
+    this.color = this.side === 'left'
+      ? `rgba(192,57,43,${this.maxAlpha})`
+      : `rgba(0,168,150,${this.maxAlpha})`;
+  }
+  update() {
+    this.life++;
+    const t = this.life / this.maxLife;
+    this.alpha = t < 0.2 ? t / 0.2 * this.maxAlpha : t > 0.7 ? (1 - (t - 0.7) / 0.3) * this.maxAlpha : this.maxAlpha;
+    this.x += this.vx + Math.sin(this.life * 0.03) * 0.3;
+    this.y += this.vy;
+    if (this.life >= this.maxLife) this.reset();
+  }
+  draw() {
+    ctx.save();
+    ctx.globalAlpha = this.alpha;
+    ctx.fillStyle = this.side === 'left' ? '#C0392B' : '#00A896';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+ 
+for (let i = 0; i < 60; i++) {
+  const p = new Particle(i < 30 ? 'left' : 'right');
+  p.life = Math.random() * p.maxLife; // stagger
+  particles.push(p);
+}
+ 
+function animParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+ 
+/* TOUCH SUPPORT */
+document.getElementById('panel-left').addEventListener('touchstart', () => lean('left'));
+document.getElementById('panel-right').addEventListener('touchstart', () => lean('right'));
+document.getElementById('panel-left').addEventListener('touchend', () => {
+  navigate('https://odiariodehass.com/finalizar-compra/?h_item=combo-1-vol-1-vol-2-e-vol-3');
+});
+document.getElementById('panel-right').addEventListener('touchend', () => {
+  navigate('https://odiariodehass.com/finalizar-compra/?h_item=livro-o-diario-de-hass-volume-1');
+});
+</script>
+</body>
+</html>
+ 
