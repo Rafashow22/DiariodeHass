@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: poppins,, sans-serif;
+}
+
+body {
+    /* versão mais fiel — dupla camada */
+background:
+  radial-gradient(ellipse 45% 38% at 52% 44%, #2a9db0 0%, transparent 60%),
+  radial-gradient(ellipse 90% 80% at 50% 50%, #0a3a48 0%, #020a0f 80%);
+}
