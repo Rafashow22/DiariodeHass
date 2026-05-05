@@ -878,6 +878,14 @@ margin-top: 15%;
     display: inline-block;
 }
 
+body.lock-scroll{
+    overflow: hidden;
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    height: 100vh;
+}
+
+
 }
 
 
@@ -962,10 +970,28 @@ margin-top: 15%;
     padding: 30px 24px 115px;
   }
 
+  body.lock-scroll{
+    overflow: hidden;
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    height: 100vh;
+}
+
+  .panel-content {
+    
+    transform: translateY(-61px);
+
+  }
 
 
+@media (max-width: 500px){
+.panel-content {
+    
+    transform: translateY(-20px);
 
-  
+}
+
+
 }
 
 

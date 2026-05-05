@@ -265,7 +265,7 @@ opacity: 0.85;
 
 
 .catalogo{
-
+margin-top: 4%;
     min-height:100vh;
 
     padding:80px 40px;
@@ -312,7 +312,8 @@ opacity: 0.85;
 
 }
 img{
-    width: 355px;
+   width: 50%;
+  margin-left: 25%;
 }
 
 .card-content h2{
@@ -335,7 +336,7 @@ div.price-old{
 }
 div.card-footer{
     display:flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 div.price{
@@ -343,14 +344,7 @@ div.price{
     color: white;
     font-weight: bold;
 }
-.button-livro{
-        width: 30%;
-   
-    transform: translateY(-20px);
-    background: aqua;
-    color: white;
-    font-weight: bold;
-}
+
 
 
 .catalogo-header{
@@ -378,8 +372,105 @@ div.price{
     font-size:20px;
 }
 
+.button-livro{height: 40px;
+  font-size: x-large;
+  font-weight: bold;
+  background: #06b6d4;
+  color: white;
+}
+.button-livro:hover{
+    opacity: 0.85;
+    transform:translateY(-4px) scale(1.03);
 
-@media (max-width: 1300px) {
+    box-shadow:
+      0 0 40px rgba(6,182,212,0.6);
+
+}
+
+.price-old{
+    text-decoration: line-through;
+}
+
+@keyframes float{
+
+    0%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(-20px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+
+}
+
+.livro-1:hover{
+
+    animation: float 0.6s ease-in-out infinite;
+
+    box-shadow:
+      0 0 20px rgba(255,255,255,0.2),
+      0 0 40px rgba(255,255,255,0.1);
+}
+
+
+.footer{
+    width: 100%;
+
+    padding: 60px 20px;
+
+    background: #080808;
+
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.footer-content{
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    text-align: center;
+}
+
+.footer-links{
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a{
+    color: #aaa;
+
+    text-decoration: none;
+
+    transition: .3s;
+}
+
+.footer-links a:hover{
+    color: cyan;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+@media (max-width: 1000px) {
 
     #navheader-mobile {
         background:rgba(0,0,0,0.65);
@@ -443,10 +534,16 @@ font-size: 10px;
     color: cadetblue;
 }
 
-
+.footer{
+    padding: 60px 0px;
 }
 
-@media (max-width: 1300px) {
+html{
+    scroll-behavior: smooth;
+}
+}
+
+@media (max-width: 520px) {
 
 .texto-1 {
     font-size: 20px;
@@ -463,5 +560,93 @@ font-size: 10px;
 #nav-carrinho:hover {
     opacity: 0.5;
 }
+
+.home{
+transform: scale(0.8);
+
+}
+.catalogo{
+    margin-top: 25%;
+
+}
+
+.catalogo-header h1{
+
+    font-size: 7vw;
+
+}
+.catalogo-header p{
+
+    font-size: 20px;
+}
+
+.button-home1{
+padding: 17px 7px;
+    
+}
+
+.button-home2{
+    padding: 17px 7px;
+}
+
+.footer{
+    padding: 60px 0px;
+}
+
+@media (max-width: 520px) {
+
+html{
+    scroll-behavior: smooth;
+}
+.home{
+transform: scale(0.75);
+    transform-origin: top center;
+
+}
+
+.catalogo{
+    margin-top: 2%;
+
+}
+
+.livros{
+gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+@media (max-width: 320px) {
+
+   .home{
+    transform: scale(0.65);} 
+}
+
+
+
+
+
+
+
 
 }
